@@ -18,7 +18,7 @@ planning on maintaining this package as we have several projects that make use o
 This project has been forked originally from https://github.com/Vinelab/cdn. All credit for the original work goes there.
 
 #### Laravel Support
-- Laravel 5.5, 5.6, 5.7, 5.8 and 6 are supported, as is package auto-discovery.
+- Laravel 6,7 and 8 are supported, as is package auto-discovery. Minimum PHP version is now 7.3.
 
 ## Highlights
 
