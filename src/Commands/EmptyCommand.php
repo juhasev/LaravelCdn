@@ -2,7 +2,7 @@
 
 namespace SampleNinja\LaravelCdn\Commands;
 
-use Symfony\Component\Console\Command\Command;
+use Illuminate\Console\Command;
 use SampleNinja\LaravelCdn\Contracts\CdnInterface;
 
 /**

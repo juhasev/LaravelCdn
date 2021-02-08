@@ -2,7 +2,7 @@
 
 namespace SampleNinja\LaravelCdn\Commands;
 
-use Symfony\Component\Console\Command\Command;
+use Illuminate\Console\Command;
 use SampleNinja\LaravelCdn\Contracts\CdnInterface;
 use SampleNinja\LaravelCdn\Cdn;
 
@@ -10,9 +10,6 @@ use SampleNinja\LaravelCdn\Cdn;
  * Class PushCommand.
  *
  * @category Command
- *
- * @author   Mahmoud Zalt <mahmoud@vinelab.com>
- * @author   Raul Ruiz <juhasev@gmail.com>
  */
 class PushCommand extends Command
 {
