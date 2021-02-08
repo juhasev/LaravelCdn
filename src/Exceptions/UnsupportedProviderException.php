@@ -2,7 +2,7 @@
 
 namespace SampleNinja\LaravelCdn\Exceptions;
 
-use App\Exceptions\CdnException;
+use Exception;
 
 class UnsupportedProviderException extends CdnException
 {

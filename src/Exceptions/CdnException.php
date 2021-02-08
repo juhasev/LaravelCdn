@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Exceptions;
+namespace SampleNinja\LaravelCdn\Exceptions;
 
+use Exception;
 use RuntimeException;
 
 class CdnException extends RuntimeException

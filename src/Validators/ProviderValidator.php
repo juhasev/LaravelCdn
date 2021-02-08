@@ -20,7 +20,7 @@ class ProviderValidator extends Validator implements ProviderValidatorInterface
      * @param $configuration
      * @param $required
      *
-     * @throws \SampleNinja\LaravelCdn\Exceptions\MissingConfigurationException
+     * @throws MissingConfigurationException
      */
     public function validate($configuration, $required)
     {

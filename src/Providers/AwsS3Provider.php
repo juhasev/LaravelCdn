@@ -72,39 +72,39 @@ class AwsS3Provider extends Provider implements ProviderInterface
     /**
      * this array holds the parsed configuration to be used across the class.
      *
-     * @var Array
+     * @var array
      */
     protected $supplier;
 
     /**
-     * @var Instance of Aws\S3\S3Client
+     * @var S3Client
      */
     protected $s3_client;
 
     /**
-     * @var Instance of Guzzle\Batch\BatchBuilder
+     * @var
      */
     protected $batch;
 
     /**
-     * @var \SampleNinja\LaravelCdn\Contracts\CdnHelperInterface
+     * @var CdnHelperInterface
      */
     protected $cdn_helper;
 
     /**
-     * @var \SampleNinja\LaravelCdn\Validators\Contracts\ConfigurationsInterface
+     * @var
      */
     protected $configurations;
 
     /**
-     * @var \SampleNinja\LaravelCdn\Validators\Contracts\ProviderValidatorInterface
+     * @var ProviderValidatorInterface
      */
     protected $provider_validator;
 
     /**
-     * @param \Symfony\Component\Console\Output\ConsoleOutput $console
-     * @param \SampleNinja\LaravelCdn\Validators\Contracts\ProviderValidatorInterface $provider_validator
-     * @param \SampleNinja\LaravelCdn\Contracts\CdnHelperInterface                    $cdn_helper
+     * @param ConsoleOutput $console
+     * @param ProviderValidatorInterface $provider_validator
+     * @param CdnHelperInterface $cdn_helper
      */
     public function __construct(
         ConsoleOutput $console,
@@ -194,8 +194,6 @@ class AwsS3Provider extends Provider implements ProviderInterface
                         'Metadata' => $this->default['providers']['aws']['s3']['metadata'],
                         'Expires' => $this->default['providers']['aws']['s3']['expires'],
                     ]);
-//                var_dump(get_class($command));exit();
-
 
                     $this->s3_client->execute($command);
                 } catch (S3Exception $e) {
@@ -414,7 +412,7 @@ class AwsS3Provider extends Provider implements ProviderInterface
     /**
      * @param $attr
      *
-     * @return Mix | null
+     * @return string | null
      */
     public function __get($attr)
     {
