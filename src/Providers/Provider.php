@@ -39,7 +39,7 @@ abstract class Provider implements ProviderInterface
     protected $url;
 
     /**
-     * @var Instance of the console object
+     * @var $console
      */
     public $console;
 

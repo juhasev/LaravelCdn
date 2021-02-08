@@ -14,7 +14,7 @@ use Mockery as M;
  */
 class AwsS3ProviderTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -58,7 +58,7 @@ class AwsS3ProviderTest extends TestCase
         $this->p_awsS3Provider->shouldReceive('connect')->andReturn(true);
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         M::close();
         parent::tearDown();

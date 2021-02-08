@@ -3,6 +3,7 @@
 namespace SampleNinja\LaravelCdn\Providers;
 
 use Aws\S3\BatchDelete;
+use Aws\S3\Exception\DeleteMultipleObjectsException;
 use Aws\S3\Exception\S3Exception;
 use Aws\S3\S3Client;
 use Illuminate\Support\Collection;
@@ -292,9 +293,11 @@ class AwsS3Provider extends Provider implements ProviderInterface
     }
 
     /**
-     * @return array
+     * Get bucket
+     *
+     * @return string
      */
-    public function getBucket()
+    public function getBucket(): string
     {
         // this step is very important, "always assign returned array from
         // magical function to a local variable if you need to modify it's
@@ -311,8 +314,9 @@ class AwsS3Provider extends Provider implements ProviderInterface
      * Empty bucket.
      *
      * @return bool
+     * @throws DeleteMultipleObjectsException
      */
-    public function emptyBucket()
+    public function emptyBucket(): bool
     {
 
         // connect before uploading

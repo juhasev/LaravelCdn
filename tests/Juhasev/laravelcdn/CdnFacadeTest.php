@@ -13,7 +13,7 @@ use Mockery as M;
  */
 class CdnFacadeTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -73,7 +73,7 @@ class CdnFacadeTest extends TestCase
             $this->provider_factory, $this->helper, $this->validator);
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         M::close();
         parent::tearDown();

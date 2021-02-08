@@ -14,14 +14,14 @@ use Mockery as M;
  */
 class CdnTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
         $this->m_spl_file_info = M::mock('Symfony\Component\Finder\SplFileInfo');
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         M::close();
         parent::tearDown();
