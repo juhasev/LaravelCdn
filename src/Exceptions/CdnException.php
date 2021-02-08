@@ -16,7 +16,7 @@ class CdnException extends RuntimeException
         return $this;
     }
 
-    // custom string representation of object
+    // Custom string representation of object
     public function __toString() {
         return __CLASS__ . ": [{$this->code}]: {$this->message}\n";
     }
