@@ -43,7 +43,7 @@ class ProviderFactoryTest extends TestCase
 
         $provider = $this->provider_factory->create($configurations);
 
-        assertEquals($provider, $m_aws_s3);
+        $this->assertEquals($provider, $m_aws_s3);
     }
 
     public function testCreateThrowsExceptionWhenMissingDefaultConfiguration()

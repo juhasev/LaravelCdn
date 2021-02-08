@@ -69,7 +69,7 @@ class CdnTest extends TestCase
 
         $result = $this->cdn->push();
 
-        assertEquals($result, true);
+        $this->assertEquals(true, $result);
     }
 
     /**
@@ -185,6 +185,6 @@ class CdnTest extends TestCase
 
         $result = $cdn->push();
 
-        assertEquals($result, true);
+        $this->assertEquals(true, $result);
     }
 }

@@ -3,6 +3,7 @@
 namespace SampleNinja\LaravelCdn\Tests;
 
 use Illuminate\Support\Collection;
+use InvalidArgumentException;
 use Mockery as M;
 
 /**
@@ -43,16 +44,15 @@ class FinderTest extends TestCase
 
         $result = $finder->read($asset_holder);
 
-        assertInstanceOf('Symfony\Component\Finder\SplFileInfo', $result->first());
+        $this->assertInstanceOf('Symfony\Component\Finder\SplFileInfo', $result->first());
 
-        assertEquals($result, new Collection($result->all()));
+        $this->assertEquals($result, new Collection($result->all()));
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
     public function testReadThrowsException()
     {
+        $this->expectException(InvalidArgumentException::class);
+
         $asset_holder = new \SampleNinja\LaravelCdn\Asset();
 
         $asset_holder->init(['include' => []]);
