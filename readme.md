@@ -280,10 +280,6 @@ Please request support or submit issues [via Github](https://github.com/juhasev/
 
 Please see [CONTRIBUTING](https://github.com/juhasev/LaravelCdn/blob/master/CONTRIBUTING.md) for details.
 
-## Security Related Issues
-
-If you discover any security related issues, please email juhasev@gmail.com instead of using the issue tracker for faster response. You should open an issue at the same time.
-
 ## Credits
 - [Juha Vehnia](https://github.com/juhasev) (forker)
 - [Raul Ruiz](https://github.com/publiux) (original forker)
