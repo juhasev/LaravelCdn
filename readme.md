@@ -18,7 +18,7 @@ planning on maintaining this package as we have several projects that make use o
 This project has been forked originally from https://github.com/Vinelab/cdn. All credit for the original work goes there.
 
 #### Laravel Support
-- Laravel 5.5, 5.6, 5.7, 5.8 and 6 are supported, as is package auto-discovery.
+- Laravel 6,7 and 8 are supported, as is package auto-discovery. Minimum PHP version is now 7.3.
 
 ## Highlights
 
@@ -280,10 +280,6 @@ Please request support or submit issues [via Github](https://github.com/juhasev/
 
 Please see [CONTRIBUTING](https://github.com/juhasev/LaravelCdn/blob/master/CONTRIBUTING.md) for details.
 
-## Security Related Issues
-
-If you discover any security related issues, please email juhasev@gmail.com instead of using the issue tracker for faster response. You should open an issue at the same time.
-
 ## Credits
 - [Juha Vehnia](https://github.com/juhasev) (forker)
 - [Raul Ruiz](https://github.com/publiux) (original forker)
@@ -296,38 +292,3 @@ If you discover any security related issues, please email juhasev@gmail.com inst
 ## License
 
 The MIT License (MIT). Please see [License File](https://github.com/juhasev/LaravelCdn/blob/master/LICENSE) for more information.
-
-## Changelog
-
-#### v2.0.10
-- Added support for Laravel 6.0
-
-#### v2.0.9
-- Added support for Laravel 5.8
-
-#### v2.0.5
-- Added connection error reporting
-
-#### v2.0.4
-- Added API support for DigitalOcean Spaces
-
-#### v2.0.3
-- Added support for an upload folder prefix
-
-#### v2.0.2
-- Updated readme to detail instructions on Laravel <5.5 usage
-
-#### v2.0.1
-- Fixed typo in composer.json
-
-#### v2.0.0
-- Support for Laravel 5.5
-
-#### v1.0.3
-- Fixed bug where schemeless Urls could not be used for CloudFront. Valid urls now begin with http, https, or simply '//'
-
-#### v1.0.2
-- Fixed bug where the elixir function was inadvertently omitted from the release.
-
-#### v1.0.1
-- Allow configuration using environment values
