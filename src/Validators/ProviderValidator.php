@@ -25,17 +25,20 @@ class ProviderValidator extends Validator implements ProviderValidatorInterface
     public function validate($configuration, $required)
     {
         // search for any null or empty field to throw an exception
-        $missing = '';
+        $missing = [];
+
         foreach ($configuration as $key => $value) {
             if (in_array($key, $required) &&
-                (empty($value) || $value == null || $value == '')
+                (empty($value) || $value == '')
             ) {
-                $missing .= ' '.$key;
+                $missing[] = $key;
             }
         }
 
         if ($missing) {
-            throw new MissingConfigurationException('Missed Configuration:'.$missing);
+            throw new MissingConfigurationException(
+                'Laravel CDN: Missing required environment variables: '.implode(",", $missing)
+            );
         }
     }
 }
