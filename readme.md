@@ -48,18 +48,18 @@ composer require "juhasev/laravelcdn:~2.0"
 
 Laravel 5.4 and below: Add the service provider and facade to `config/app.php`:
 
-```php
+```
 'providers' => array(
      //...
      SampleNinja\LaravelCdn\CdnServiceProvider::class,
-),
+)
 ```
 
-```php
+```
 'aliases' => array(
      //...
      'CDN' => SampleNinja\LaravelCdn\Facades\CdnFacadeAccessor::class
-),
+)
 ```
 
 *If you are using Laravel 5.5, there is no need to register the service provider as this package is automatically discovered.*
@@ -79,7 +79,7 @@ Set your AWS Credentials and other settings in the `.env` file.
 
 *Note: you should always have an `.env` file at the project root, to hold your sensitive information. This file should usually not be committed to your VCS.*
 
-```bash
+```
 AWS_ACCESS_KEY_ID=
 AWS_SECRET_ACCESS_KEY=
 ```
@@ -88,7 +88,7 @@ AWS_SECRET_ACCESS_KEY=
 
 Set the CDN URL:
 
-```php
+```
 'url' => env('CDN_Url', 'https://s3.amazonaws.com'),
 ```
 
@@ -102,19 +102,19 @@ CDN_Url=
 
 To load your LOCAL assets for testing or during development, set the `bypass` option to `true`:
 
-```php
+```
 'bypass' => env('CDN_Bypass', false),
 ```
 
 This can be altered in your '.env' file as follows:
 
-```bash
+```
 CDN_Bypass=
 ```
 
 ##### Cloudfront Support
 
-```php
+```
 'cloudfront'    => [
     'use' => env('CDN_UseCloudFront', false),
     'cdn_url' => env('CDN_CloudFrontUrl', false)
@@ -123,7 +123,7 @@ CDN_Bypass=
 
 This can be altered in your '.env' file as follows:
 
-```bash
+```
 CDN_UseCloudFront=
 CDN_CloudFrontUrl=
 ```
@@ -131,13 +131,13 @@ CDN_CloudFrontUrl=
 ##### Default CDN Provider
 For now, the only CDN provider available is AwsS3. Although, as DO natively support the AWS API, you can utilise it by also providing the endpoint, please see the cdn.php config for more info. This option cannot be set in '.env'.
 
-```php
+```
 'default' => 'AwsS3',
 ```
 
 ##### CDN Provider Configuration
 
-```php
+```
 'aws' => [
 
     's3' => [
@@ -155,7 +155,7 @@ For now, the only CDN provider available is AwsS3. Although, as DO natively supp
 
 ###### Multiple Buckets
 
-```php
+```
 'buckets' => [
 
     'my-default-bucket' => '*',
@@ -173,7 +173,7 @@ For now, the only CDN provider available is AwsS3. Although, as DO natively supp
 
 Specify directories, extensions, files and patterns to be uploaded.
 
-```php
+```
 'include'    => [
     'directories'   => ['public/dist'],
     'extensions'    => ['.js', '.css', '.yxz'],
@@ -185,7 +185,7 @@ Specify directories, extensions, files and patterns to be uploaded.
 
 Specify what to be ignored.
 
-```php
+```
 'exclude'    => [
     'directories'   => ['public/uploads'],
     'files'         => [''],
@@ -195,12 +195,9 @@ Specify what to be ignored.
 ],
 ```
 
-
-
-
 ##### Other Configurations
 
-```php
+```
 'acl'           => 'public-read',
 'metadata'      => [ ],
 'expires'       => gmdate("D, d M Y H:i:s T", strtotime("+5 years")),
