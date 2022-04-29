@@ -18,7 +18,7 @@ planning on maintaining this package as we have several projects that make use o
 This project has been forked originally from https://github.com/Vinelab/cdn. All credit for the original work goes there.
 
 #### Laravel Support
-- Laravel 6,7 and 8 are supported, as is package auto-discovery. Minimum PHP version is now 7.3.
+- Laravel 6,7,8 and 9 are supported, as is package auto-discovery. Minimum PHP version is now 7.3 and for Laravel 9 8.0
 
 ## Highlights
 
@@ -26,7 +26,6 @@ This project has been forked originally from https://github.com/Vinelab/cdn. All
 - DigitalOcean (DO) - Spaces
 - Artisan command to upload content to CDN
 - Simple Facade to access CDN assets
-
 
 ### Questions
 1. Is this package an alternative to Laravel FileSystem and do they work together?
