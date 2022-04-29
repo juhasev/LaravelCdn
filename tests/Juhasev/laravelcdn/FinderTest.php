@@ -1,10 +1,11 @@
 <?php
 
-namespace SampleNinja\LaravelCdn\Tests;
+namespace SampleNinja\LaravelCdn\Tests\Juhasev\laravelcdn;
 
 use Illuminate\Support\Collection;
 use InvalidArgumentException;
 use Mockery as M;
+use SampleNinja\LaravelCdn\Tests\TestCase;
 
 /**
  * Class FinderTest.
