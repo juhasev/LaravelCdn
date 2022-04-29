@@ -1,10 +1,12 @@
 <?php
 
-namespace SampleNinja\LaravelCdn\Tests;
+namespace SampleNinja\LaravelCdn\Tests\Juhasev\laravelcdn;
 
 use Illuminate\Support\Facades\App;
 use Mockery as M;
+use SampleNinja\LaravelCdn\Exceptions\MissingConfigurationException;
 use SampleNinja\LaravelCdn\ProviderFactory;
+use SampleNinja\LaravelCdn\Tests\TestCase;
 
 /**
  * Class ProviderFactoryTest.
@@ -54,6 +56,11 @@ class ProviderFactoryTest extends TestCase
 
         App::shouldReceive('make')->once()->andReturn($m_aws_s3);
 
-        $this->provider_factory->create($configurations);
+        try {
+            $this->provider_factory->create($configurations);
+        } catch (\Exception $e) {
+            $this->assertInstanceOf(MissingConfigurationException::class, $e);
+            $this->assertEquals('Missing Configurations: Default Provider', $e->getMessage());
+        }
     }
 }

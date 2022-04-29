@@ -1,9 +1,10 @@
 <?php
 
-namespace SampleNinja\LaravelCdn\Tests;
+namespace SampleNinja\LaravelCdn\Tests\Juhasev\laravelcdn;
 
 use Illuminate\Support\Collection;
 use Mockery as M;
+use SampleNinja\LaravelCdn\Tests\TestCase;
 
 /**
  * Class CdnTest.
@@ -100,8 +101,6 @@ class CdnTest extends TestCase
                         'expires' => gmdate('D, d M Y H:i:s T', strtotime('+5 years')),
 
                         'cache-control' => 'max-age=2628000',
-
-                        'version' => '',
                     ],
                 ],
             ],
@@ -160,18 +159,16 @@ class CdnTest extends TestCase
             $m_helper,
         ]);
 
-        $m_s3 = M::mock('Aws\S3\S3Client')->shouldIgnoreMissing();
-        $m_s3->shouldReceive('factory')
-            ->andReturn('Aws\S3\S3Client');
+        $m_s3 = M::mock('Aws\S3\S3Client');
+        $m_s3->shouldReceive('factory')->andReturn('Aws\S3\S3Client');
         $m_command = M::mock('Aws\Command');
-        $m_s3->shouldReceive('getCommand')
-            ->andReturn($m_command);
+        $m_s3->shouldReceive('getCommand')->andReturn($m_command);
+        $m_command1 = M::mock('Aws\Result')->shouldIgnoreMissing();
+        $m_s3->shouldReceive('listObjects')->andReturn($m_command1);
         $m_s3->shouldReceive('execute');
-
         $p_aws_s3_provider->setS3Client($m_s3);
 
-        $p_aws_s3_provider->shouldReceive('connect')
-            ->andReturn(true);
+        $p_aws_s3_provider->shouldReceive('connect')->andReturn(true);
 
         \Illuminate\Support\Facades\App::shouldReceive('make')
             ->once()

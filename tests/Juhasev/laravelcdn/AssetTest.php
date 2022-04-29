@@ -1,8 +1,9 @@
 <?php
 
-namespace SampleNinja\LaravelCdn\Tests;
+namespace SampleNinja\LaravelCdn\Tests\Juhasev\laravelcdn;
 
 use Mockery as M;
+use SampleNinja\LaravelCdn\Tests\TestCase;
 
 /**
  * Class AssetTest.

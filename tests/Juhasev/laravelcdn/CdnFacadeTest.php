@@ -1,9 +1,10 @@
 <?php
 
-namespace SampleNinja\LaravelCdn\Tests;
+namespace SampleNinja\LaravelCdn\Tests\Juhasev\laravelcdn;
 
 use Mockery as M;
 use SampleNinja\LaravelCdn\Exceptions\EmptyPathException;
+use SampleNinja\LaravelCdn\Tests\TestCase;
 
 /**
  * Class CdnFacadeTest.
@@ -36,7 +37,6 @@ class CdnFacadeTest extends TestCase
                             'use'     => false,
                             'cdn_url' => '',
                         ],
-                        'version'     => '1',
                     ],
                 ],
             ],
@@ -102,11 +102,13 @@ class CdnFacadeTest extends TestCase
         $this->assertEquals($result, $this->asset_url);
     }
 
-    /**
-     * @throw EmptyPathException
-     */
     public function testUrlGeneratorThrowsException()
     {
-        $this->invokeMethod($this->facade, 'generateUrl', [null, null]);
+        try {
+            $this->invokeMethod($this->facade, 'generateUrl', [null, null]);
+        } catch (\Exception $e) {
+            $this->assertInstanceOf(EmptyPathException::class, $e);
+            $this->assertEquals('Path does not exist.', $e->getMessage());
+        }
     }
 }

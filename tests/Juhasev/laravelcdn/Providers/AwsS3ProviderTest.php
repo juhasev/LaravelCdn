@@ -1,9 +1,10 @@
 <?php
 
-namespace SampleNinja\LaravelCdn\Tests;
+namespace SampleNinja\LaravelCdn\Tests\Juhasev\laravelcdn\Providers;
 
 use Illuminate\Support\Collection;
 use Mockery as M;
+use SampleNinja\LaravelCdn\Tests\TestCase;
 
 /**
  * Class AwsS3ProviderTest.
@@ -47,11 +48,9 @@ class AwsS3ProviderTest extends TestCase
         $this->m_s3 = M::mock('Aws\S3\S3Client');
         $this->m_s3->shouldReceive('factory')->andReturn('Aws\S3\S3Client');
         $m_command = M::mock('Aws\Command');
-        $this->m_s3->shouldReceive('getCommand')
-            ->andReturn($m_command);
+        $this->m_s3->shouldReceive('getCommand')->andReturn($m_command);
         $m_command1 = M::mock('Aws\Result')->shouldIgnoreMissing();
-        $this->m_s3->shouldReceive('listObjects')
-            ->andReturn($m_command1);
+        $this->m_s3->shouldReceive('listObjects')->andReturn($m_command1);
         $this->m_s3->shouldReceive('execute');
         $this->p_awsS3Provider->setS3Client($this->m_s3);
 

@@ -1,30 +1,11 @@
 <?php
 
-
 namespace SampleNinja\LaravelCdn\Tests;
 
-// requiring this file to reference assertions as global functions. (to skip the $this->)
-require_once 'vendor/phpunit/phpunit/src/Framework/Assert/Functions.php';
+use PHPUnit\Framework\TestCase as BaseTestCase;
 
-use PHPUnit\Framework\TestCase as PHPUnit;
-
-class TestCase extends PHPUnit
+abstract class TestCase extends BaseTestCase
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-    public function setUp(): void
-    {
-        parent::setUp();
-    }
-
-    public function tearDown(): void
-    {
-        parent::tearDown();
-    }
-
     /**
      * Call protected/private method of a class.
      *
