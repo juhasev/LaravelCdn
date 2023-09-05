@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-cdn` will be documented in this file.
 
+## v4.0.1 - 2023-09-05
+
+### What's Changed
+
+- chore: update update-changelog.yml GH workflow
+
+**Full Changelog**: https://github.com/juhasev/LaravelCdn/compare/v4.0.0...v4.0.1
+
 ## v3.0.0 - 2022-05-05
 
 **Full Changelog**: https://github.com/juhasev/LaravelCdn/compare/v2.2.0...v3.0.0
