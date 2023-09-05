@@ -12,8 +12,6 @@ class CdnException extends RuntimeException
 
         // make sure everything is assigned properly
         parent::__construct($message, $code, $previous);
-
-        return $this;
     }
 
     // Custom string representation of object

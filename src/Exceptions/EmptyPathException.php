@@ -11,8 +11,6 @@ class EmptyPathException extends CdnException
 
         // make sure everything is assigned properly
         parent::__construct($message, $code, $previous);
-
-        return $this;
     }
 
     // custom string representation of object

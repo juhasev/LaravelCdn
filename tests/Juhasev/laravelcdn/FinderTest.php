@@ -16,11 +16,6 @@ use SampleNinja\LaravelCdn\Tests\TestCase;
  */
 class FinderTest extends TestCase
 {
-    public function setUp(): void
-    {
-        parent::setUp();
-    }
-
     public function tearDown(): void
     {
         M::close();
