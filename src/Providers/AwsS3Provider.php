@@ -33,7 +33,7 @@ use Symfony\Component\Console\Output\ConsoleOutput;
  *
  * @author   Mahmoud Zalt <mahmoud@vinelab.com>
  */
-class AwsS3Provider extends Provider implements ProviderInterface
+class AwsS3Provider extends Provider
 {
     /**
      * All the configurations needed by this class with the
