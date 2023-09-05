@@ -10,6 +10,13 @@ All notable changes to `laravel-cdn` will be documented in this file.
 
 **Full Changelog**: https://github.com/juhasev/LaravelCdn/compare/v4.0.0...v4.0.1
 
+## v4.0.0 - 2023-09-05
+
+### What's Changed
+* chore: upgrade laravel 10 by @leMaur in https://github.com/juhasev/LaravelCdn/pull/7
+
+**Full Changelog**: https://github.com/juhasev/LaravelCdn/compare/v3.0.0...v4.0.0
+
 ## v3.0.0 - 2022-05-05
 
 **Full Changelog**: https://github.com/juhasev/LaravelCdn/compare/v2.2.0...v3.0.0
