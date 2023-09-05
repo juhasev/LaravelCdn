@@ -18,7 +18,10 @@ planning on maintaining this package as we have several projects that make use o
 This project has been forked originally from https://github.com/Vinelab/cdn. All credit for the original work goes there.
 
 #### Laravel Support
-- Laravel 6,7,8 and 9 are supported, as is package auto-discovery. Minimum PHP version is now 7.3 and for Laravel 9 8.0
+- If you are using Laravel 10 use `v4.*`
+- If you are using Laravel 9 use `v3.*`
+- If you are using Laravel 8 use `v2.2.0`
+- If you are using Laravel 7 use `v2.1.0`
 
 ## Highlights
 
@@ -40,7 +43,7 @@ This project has been forked originally from https://github.com/Vinelab/cdn. All
 Require `juhasev/laravelcdn` in your project:
 
 ```bash
-composer require "juhasev/laravelcdn:~2.0"
+composer require juhasev/laravelcdn
 ```
 
 *If you are using Laravel 5.4 or below, you need to register the service provider:*
