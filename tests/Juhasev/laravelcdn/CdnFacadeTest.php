@@ -15,6 +15,24 @@ use SampleNinja\LaravelCdn\Tests\TestCase;
  */
 class CdnFacadeTest extends TestCase
 {
+    private string $asset_path;
+    private string $path_path;
+    private string $asset_url;
+    /**
+     * @var M\LegacyMockInterface|M\MockInterface|\SampleNinja\LaravelCdn\Providers\AwsS3Provider|(\SampleNinja\LaravelCdn\Providers\AwsS3Provider&M\LegacyMockInterface)|(\SampleNinja\LaravelCdn\Providers\AwsS3Provider&M\MockInterface)
+     */
+    private \SampleNinja\LaravelCdn\Providers\AwsS3Provider|M\LegacyMockInterface|M\MockInterface $provider;
+    /**
+     * @var M\LegacyMockInterface|M\MockInterface|\SampleNinja\LaravelCdn\Contracts\ProviderFactoryInterface|(\SampleNinja\LaravelCdn\Contracts\ProviderFactoryInterface&M\LegacyMockInterface)|(\SampleNinja\LaravelCdn\Contracts\ProviderFactoryInterface&M\MockInterface)
+     */
+    private \SampleNinja\LaravelCdn\Contracts\ProviderFactoryInterface|M\MockInterface|M\LegacyMockInterface $provider_factory;
+    /**
+     * @var M\LegacyMockInterface|M\MockInterface|\SampleNinja\LaravelCdn\Contracts\CdnHelperInterface|(\SampleNinja\LaravelCdn\Contracts\CdnHelperInterface&M\LegacyMockInterface)|(\SampleNinja\LaravelCdn\Contracts\CdnHelperInterface&M\MockInterface)
+     */
+    private M\LegacyMockInterface|M\MockInterface|\SampleNinja\LaravelCdn\Contracts\CdnHelperInterface $helper;
+    private \SampleNinja\LaravelCdn\Validators\CdnFacadeValidator $validator;
+    private \SampleNinja\LaravelCdn\CdnFacade $facade;
+
     public function setUp(): void
     {
         parent::setUp();
@@ -80,7 +98,7 @@ class CdnFacadeTest extends TestCase
         parent::tearDown();
     }
 
-    public function testAssetIsCallingUrlGenerator()
+    public function testAssetIsCallingUrlGenerator(): void
     {
         $this->provider->shouldReceive('urlGenerator')
                        ->once()
@@ -91,7 +109,7 @@ class CdnFacadeTest extends TestCase
         $this->assertEquals($result, $this->asset_url);
     }
 
-    public function testPathIsCallingUrlGenerator()
+    public function testPathIsCallingUrlGenerator(): void
     {
         $this->provider->shouldReceive('urlGenerator')
                        ->once()
@@ -102,7 +120,7 @@ class CdnFacadeTest extends TestCase
         $this->assertEquals($result, $this->asset_url);
     }
 
-    public function testUrlGeneratorThrowsException()
+    public function testUrlGeneratorThrowsException(): void
     {
         try {
             $this->invokeMethod($this->facade, 'generateUrl', [null, null]);
