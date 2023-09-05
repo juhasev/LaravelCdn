@@ -17,6 +17,8 @@ use SampleNinja\LaravelCdn\Tests\TestCase;
  */
 class ProviderFactoryTest extends TestCase
 {
+    private ProviderFactory $provider_factory;
+
     public function setUp(): void
     {
         parent::setUp();
@@ -30,7 +32,7 @@ class ProviderFactoryTest extends TestCase
         parent::tearDown();
     }
 
-    public function testCreateReturnCorrectProviderObject()
+    public function testCreateReturnCorrectProviderObject(): void
     {
         $configurations = ['default' => 'AwsS3'];
 
@@ -48,7 +50,7 @@ class ProviderFactoryTest extends TestCase
         $this->assertEquals($provider, $m_aws_s3);
     }
 
-    public function testCreateThrowsExceptionWhenMissingDefaultConfiguration()
+    public function testCreateThrowsExceptionWhenMissingDefaultConfiguration(): void
     {
         $configurations = ['default' => ''];
 

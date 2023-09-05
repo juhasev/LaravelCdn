@@ -16,18 +16,13 @@ use SampleNinja\LaravelCdn\Tests\TestCase;
  */
 class FinderTest extends TestCase
 {
-    public function setUp(): void
-    {
-        parent::setUp();
-    }
-
     public function tearDown(): void
     {
         M::close();
         parent::tearDown();
     }
 
-    public function testReadReturnCorrectDataType()
+    public function testReadReturnCorrectDataType(): void
     {
         $asset_holder = new \SampleNinja\LaravelCdn\Asset();
 
@@ -50,7 +45,7 @@ class FinderTest extends TestCase
         $this->assertEquals($result, new Collection($result->all()));
     }
 
-    public function testReadThrowsException()
+    public function testReadThrowsException(): void
     {
         $this->expectException(InvalidArgumentException::class);
 

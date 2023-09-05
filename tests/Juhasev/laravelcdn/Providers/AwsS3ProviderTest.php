@@ -15,6 +15,33 @@ use SampleNinja\LaravelCdn\Tests\TestCase;
  */
 class AwsS3ProviderTest extends TestCase
 {
+    private string $url;
+    private string $cdn_url;
+    private string $path;
+    private string $path_url;
+    private string|int|array|null|false $pased_url;
+    /**
+     * @var M\LegacyMockInterface|M\MockInterface|\Symfony\Component\Console\Output\ConsoleOutput|(\Symfony\Component\Console\Output\ConsoleOutput&M\LegacyMockInterface)|(\Symfony\Component\Console\Output\ConsoleOutput&M\MockInterface)
+     */
+    private M\LegacyMockInterface|\Symfony\Component\Console\Output\ConsoleOutput|M\MockInterface $m_console;
+    /**
+     * @var \Aws\S3\S3Client|(\Aws\S3\S3Client&M\LegacyMockInterface)|(\Aws\S3\S3Client&M\MockInterface)|M\LegacyMockInterface|M\MockInterface
+     */
+    private \Aws\S3\S3Client|M\MockInterface|M\LegacyMockInterface $m_s3;
+    /**
+     * @var M\LegacyMockInterface|M\MockInterface|\Symfony\Component\Finder\SplFileInfo|(\Symfony\Component\Finder\SplFileInfo&M\LegacyMockInterface)|(\Symfony\Component\Finder\SplFileInfo&M\MockInterface)
+     */
+    private M\LegacyMockInterface|\Symfony\Component\Finder\SplFileInfo|M\MockInterface $m_spl_file;
+    /**
+     * @var M\LegacyMockInterface|M\MockInterface|\SampleNinja\LaravelCdn\Validators\Contracts\ProviderValidatorInterface|(\SampleNinja\LaravelCdn\Validators\Contracts\ProviderValidatorInterface&M\LegacyMockInterface)|(\SampleNinja\LaravelCdn\Validators\Contracts\ProviderValidatorInterface&M\MockInterface)
+     */
+    private \SampleNinja\LaravelCdn\Validators\Contracts\ProviderValidatorInterface|M\LegacyMockInterface|M\MockInterface $m_validator;
+    /**
+     * @var M\LegacyMockInterface|M\MockInterface|\SampleNinja\LaravelCdn\CdnHelper|(\SampleNinja\LaravelCdn\CdnHelper&M\LegacyMockInterface)|(\SampleNinja\LaravelCdn\CdnHelper&M\MockInterface)
+     */
+    private \SampleNinja\LaravelCdn\CdnHelper|M\LegacyMockInterface|M\MockInterface $m_helper;
+    private \SampleNinja\LaravelCdn\Validators\Contracts\ProviderValidatorInterface|M\LegacyMockInterface|M\MockInterface $p_awsS3Provider;
+
     public function setUp(): void
     {
         parent::setUp();
@@ -63,7 +90,7 @@ class AwsS3ProviderTest extends TestCase
         parent::tearDown();
     }
 
-    public function testInitializingObject()
+    public function testInitializingObject(): void
     {
         $configurations = [
             'default' => 'AwsS3',
@@ -85,7 +112,6 @@ class AwsS3ProviderTest extends TestCase
                         'metadata' => [],
                         'expires' => gmdate('D, d M Y H:i:s T', strtotime('+5 years')),
                         'cache-control' => 'max-age=2628000',
-                        'version' => null,
                         'http' => null,
                     ],
                 ],
@@ -97,7 +123,7 @@ class AwsS3ProviderTest extends TestCase
         $this->assertInstanceOf('SampleNinja\LaravelCdn\Providers\AwsS3Provider', $awsS3Provider_obj);
     }
 
-    public function testUploadingAssets()
+    public function testUploadingAssets(): void
     {
         $configurations = [
             'default' => 'AwsS3',
@@ -119,7 +145,6 @@ class AwsS3ProviderTest extends TestCase
                         'metadata' => [],
                         'expires' => gmdate('D, d M Y H:i:s T', strtotime('+5 years')),
                         'cache-control' => 'max-age=2628000',
-                        'version' => null,
                         'http' => null,
                     ],
                 ],
@@ -130,10 +155,10 @@ class AwsS3ProviderTest extends TestCase
 
         $result = $this->p_awsS3Provider->upload(new Collection([$this->m_spl_file]));
 
-        $this->assertEquals(true, $result);
+        $this->assertTrue($result);
     }
 
-    public function testUrlGenerator()
+    public function testUrlGenerator(): void
     {
         $configurations = [
             'default' => 'AwsS3',
@@ -155,7 +180,6 @@ class AwsS3ProviderTest extends TestCase
                         'metadata' => [],
                         'expires' => gmdate('D, d M Y H:i:s T', strtotime('+5 years')),
                         'cache-control' => 'max-age=2628000',
-                        'version' => null,
                         'http' => null,
                     ],
                 ],
@@ -169,7 +193,7 @@ class AwsS3ProviderTest extends TestCase
         $this->assertEquals($this->cdn_url, $result);
     }
 
-    public function testEmptyUrlGenerator()
+    public function testEmptyUrlGenerator(): void
     {
         $configurations = [
             'default' => 'AwsS3',
@@ -191,7 +215,6 @@ class AwsS3ProviderTest extends TestCase
                         'metadata' => [],
                         'expires' => gmdate('D, d M Y H:i:s T', strtotime('+5 years')),
                         'cache-control' => 'max-age=2628000',
-                        'version' => null,
                         'http' => null,
                     ],
                 ],

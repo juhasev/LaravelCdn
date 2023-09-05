@@ -15,68 +15,62 @@ use SampleNinja\LaravelCdn\Tests\TestCase;
  */
 class CdnTest extends TestCase
 {
-    public function setUp(): void
-    {
-        parent::setUp();
-
-        $this->m_spl_file_info = M::mock('Symfony\Component\Finder\SplFileInfo');
-    }
-
     public function tearDown(): void
     {
         M::close();
         parent::tearDown();
     }
 
-    public function testPushCommandReturnTrue()
+    public function testPushCommandReturnTrue(): void
     {
-        $this->m_asset = M::mock('SampleNinja\LaravelCdn\Contracts\AssetInterface');
-        $this->m_asset->shouldReceive('init')
+        $m_asset = M::mock('SampleNinja\LaravelCdn\Contracts\AssetInterface');
+        $m_asset->shouldReceive('init')
             ->once()
-            ->andReturn($this->m_asset);
-        $this->m_asset->shouldReceive('setAssets')
+            ->andReturn($m_asset);
+        $m_asset->shouldReceive('setAssets')
             ->once();
 
-        $this->m_asset->shouldReceive('getAssets')
+        $m_asset->shouldReceive('getAssets')
             ->once()
             ->andReturn(new Collection());
 
-        $this->m_finder = M::mock('SampleNinja\LaravelCdn\Contracts\FinderInterface');
-        $this->m_finder->shouldReceive('read')
-            ->with($this->m_asset)
+        $m_finder = M::mock('SampleNinja\LaravelCdn\Contracts\FinderInterface');
+        $m_finder->shouldReceive('read')
+            ->with($m_asset)
             ->once()
             ->andReturn(new Collection());
 
-        $this->m_provider = M::mock('SampleNinja\LaravelCdn\Providers\Provider');
-        $this->m_provider->shouldReceive('upload')
+        $m_provider = M::mock('SampleNinja\LaravelCdn\Providers\Provider');
+        $m_provider->shouldReceive('upload')
             ->once()
             ->andReturn(true);
 
-        $this->m_provider_factory = M::mock('SampleNinja\LaravelCdn\Contracts\ProviderFactoryInterface');
-        $this->m_provider_factory->shouldReceive('create')
+        $m_provider_factory = M::mock('SampleNinja\LaravelCdn\Contracts\ProviderFactoryInterface');
+        $m_provider_factory->shouldReceive('create')
             ->once()
-            ->andReturn($this->m_provider);
+            ->andReturn($m_provider);
 
-        $this->m_helper = M::mock('SampleNinja\LaravelCdn\Contracts\CdnHelperInterface');
-        $this->m_helper->shouldReceive('getConfigurations')
+        $m_helper = M::mock('SampleNinja\LaravelCdn\Contracts\CdnHelperInterface');
+        $m_helper->shouldReceive('getConfigurations')
             ->once()
             ->andReturn([]);
 
-        $this->cdn = new \SampleNinja\LaravelCdn\Cdn(
-            $this->m_finder,
-            $this->m_asset,
-            $this->m_provider_factory,
-            $this->m_helper);
+        $cdn = new \SampleNinja\LaravelCdn\Cdn(
+            $m_finder,
+            $m_asset,
+            $m_provider_factory,
+            $m_helper
+        );
 
-        $result = $this->cdn->push();
+        $result = $cdn->push();
 
-        $this->assertEquals(true, $result);
+        $this->assertTrue($result);
     }
 
     /**
      * Integration Test.
      */
-    public function testPushCommand()
+    public function testPushCommand(): void
     {
         $configuration_file = [
             'bypass'    => false,
@@ -118,11 +112,10 @@ class CdnTest extends TestCase
             ],
         ];
 
-        $m_consol = M::mock('Symfony\Component\Console\Output\ConsoleOutput');
-        $m_consol->shouldReceive('writeln')
-            ->atLeast(1);
+        $m_console = M::mock('Symfony\Component\Console\Output\ConsoleOutput');
+        $m_console->shouldReceive('writeln')->atLeast(1);
 
-        $finder = new \SampleNinja\LaravelCdn\Finder($m_consol);
+        $finder = new \SampleNinja\LaravelCdn\Finder($m_console);
 
         $asset = new \SampleNinja\LaravelCdn\Asset();
 
@@ -137,8 +130,7 @@ class CdnTest extends TestCase
         $helper = new \SampleNinja\LaravelCdn\CdnHelper($m_config);
 
         $m_console = M::mock('Symfony\Component\Console\Output\ConsoleOutput');
-        $m_console->shouldReceive('writeln')
-            ->atLeast(2);
+        $m_console->shouldReceive('writeln')->atLeast(2);
 
         $m_validator = M::mock('SampleNinja\LaravelCdn\Validators\Contracts\ProviderValidatorInterface');
         $m_validator->shouldReceive('validate');
@@ -182,6 +174,6 @@ class CdnTest extends TestCase
 
         $result = $cdn->push();
 
-        $this->assertEquals(true, $result);
+        $this->assertTrue($result);
     }
 }

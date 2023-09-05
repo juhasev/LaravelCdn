@@ -14,6 +14,8 @@ use SampleNinja\LaravelCdn\Tests\TestCase;
  */
 class AssetTest extends TestCase
 {
+    private \SampleNinja\LaravelCdn\Asset $asset;
+
     public function setUp(): void
     {
         parent::setUp();
@@ -27,7 +29,7 @@ class AssetTest extends TestCase
         parent::tearDown();
     }
 
-    public function testInitReturningAssetObject()
+    public function testInitReturningAssetObject(): void
     {
         $dir = 'foo';
 
@@ -41,7 +43,7 @@ class AssetTest extends TestCase
         $this->assertEquals($result, $this->asset);
     }
 
-    public function testIncludedDirectories()
+    public function testIncludedDirectories(): void
     {
         $dir = 'foo';
 
@@ -56,7 +58,7 @@ class AssetTest extends TestCase
         $this->assertEquals($result, $dir);
     }
 
-    public function testIncludedExtensions()
+    public function testIncludedExtensions(): void
     {
         $ext = 'foo';
 
@@ -71,7 +73,7 @@ class AssetTest extends TestCase
         $this->assertEquals($result, $ext);
     }
 
-    public function testIncludedPatterns()
+    public function testIncludedPatterns(): void
     {
         $pat = 'foo';
 
@@ -86,7 +88,7 @@ class AssetTest extends TestCase
         $this->assertEquals($result, $pat);
     }
 
-    public function testExcludedDirectories()
+    public function testExcludedDirectories(): void
     {
         $dir = 'foo';
 
@@ -101,7 +103,7 @@ class AssetTest extends TestCase
         $this->assertEquals($result, $dir);
     }
 
-    public function testExcludedFiles()
+    public function testExcludedFiles(): void
     {
         $dir = 'foo';
 
@@ -116,7 +118,7 @@ class AssetTest extends TestCase
         $this->assertEquals($result, $dir);
     }
 
-    public function testExcludedExtensions()
+    public function testExcludedExtensions(): void
     {
         $dir = 'foo';
 
@@ -146,18 +148,16 @@ class AssetTest extends TestCase
         $this->assertEquals($result, $dir);
     }
 
-    public function testExcludedHidden()
+    public function testExcludedHidden(): void
     {
-        $bol = true;
-
         $this->asset->init([
             'exclude' => [
-                'hidden' => $bol,
+                'hidden' => true,
             ],
         ]);
 
         $result = $this->asset->getExcludeHidden();
 
-        $this->assertEquals($result, $bol);
+        $this->assertTrue($result);
     }
 }
