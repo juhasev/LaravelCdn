@@ -4,7 +4,7 @@ namespace SampleNinja\LaravelCdn\Tests;
 
 use PHPUnit\Framework\TestCase as BaseTestCase;
 
-abstract class TestCase extends BaseTestCase
+class TestCase extends BaseTestCase
 {
     /**
      * Call protected/private method of a class.
