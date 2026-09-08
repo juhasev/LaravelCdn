@@ -141,7 +141,8 @@ class CdnFacade implements CdnFacadeInterface
      *
      * @return mixed
      *
-     * @throws EmptyPathException, \InvalidArgumentException
+     * @throws EmptyPathException
+     * @throws \InvalidArgumentException
      */
     public function mix($path)
     {
@@ -165,7 +166,8 @@ class CdnFacade implements CdnFacadeInterface
      *
      * @param $path
      *
-     * @throws EmptyPathException, \InvalidArgumentException
+     * @throws EmptyPathException
+     * @throws \InvalidArgumentException
      *
      * @return mixed
      */

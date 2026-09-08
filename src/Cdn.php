@@ -21,7 +21,7 @@ class Cdn implements CdnInterface
     /**
      * An instance of the finder class.
      *
-     * @var Contracts\
+     * @var Contracts\FinderInterface
      */
     protected $finder;
 

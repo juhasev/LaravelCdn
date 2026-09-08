@@ -187,7 +187,7 @@ class Asset implements AssetInterface
     }
 
     /**
-     * @return Collection
+     * @return \Illuminate\Support\Collection
      */
     public function getAssets()
     {

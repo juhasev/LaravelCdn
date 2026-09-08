@@ -3,7 +3,6 @@
 namespace SampleNinja\LaravelCdn\Commands;
 
 use Illuminate\Console\Command;
-use SampleNinja\LaravelCdn\Cdn;
 use SampleNinja\LaravelCdn\Contracts\CdnInterface;
 
 /**
@@ -33,7 +32,7 @@ class EmptyCommand extends Command
     /**
      * an instance of the main Cdn class.
      *
-     * @var Cdn
+     * @var CdnInterface
      */
     protected $cdn;
 
