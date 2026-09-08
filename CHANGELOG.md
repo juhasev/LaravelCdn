@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-cdn` will be documented in this file.
 
+## v6.0.0 - 2026-09-08
+
+### What's Changed
+
+* Update to Laravel 13 by @leMaur in https://github.com/juhasev/LaravelCdn/pull/10
+
+**Full Changelog**: https://github.com/juhasev/LaravelCdn/compare/v5.0.0...v6.0.0
+
 ## v5.0.0 - 2026-09-08
 
 ### What's Changed
