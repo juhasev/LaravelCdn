@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-cdn` will be documented in this file.
 
+## v5.0.0 - 2026-09-08
+
+### What's Changed
+
+* Update to Laravel 12 by @leMaur in https://github.com/juhasev/LaravelCdn/pull/9
+
+**Full Changelog**: https://github.com/juhasev/LaravelCdn/compare/v4.1.0...v5.0.0
+
 ## v4.1.0 - 2024-07-18
 
 ### What's Changed
