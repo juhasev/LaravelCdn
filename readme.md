@@ -18,6 +18,7 @@ planning on maintaining this package as we have several projects that make use o
 This project has been forked originally from https://github.com/Vinelab/cdn. All credit for the original work goes there.
 
 #### Laravel Support
+- If you are using Laravel 13 use `v6.*`
 - If you are using Laravel 12 use `v5.*`
 - If you are using Laravel 11 use `v4.1.*`
 - If you are using Laravel 10 use `v4.0.*`
