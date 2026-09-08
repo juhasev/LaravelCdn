@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-cdn` will be documented in this file.
 
+## v6.0.1 - 2026-09-08
+
+### What's Changed
+
+* Harden the supply chain: pin actions, tighten permissions, add a Composer audit by @leMaur in https://github.com/juhasev/LaravelCdn/pull/11
+
+**Full Changelog**: https://github.com/juhasev/LaravelCdn/compare/v6.0.0...v6.0.1
+
 ## v6.0.0 - 2026-09-08
 
 ### What's Changed
