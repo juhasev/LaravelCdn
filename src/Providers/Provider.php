@@ -3,6 +3,7 @@
 namespace SampleNinja\LaravelCdn\Providers;
 
 use SampleNinja\LaravelCdn\Providers\Contracts\ProviderInterface;
+use Symfony\Component\Console\Output\ConsoleOutput;
 
 /**
  * Class Provider.
@@ -39,7 +40,7 @@ abstract class Provider implements ProviderInterface
     protected $url;
 
     /**
-     * @var $console
+     * @var ConsoleOutput
      */
     public $console;
 

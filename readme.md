@@ -18,7 +18,9 @@ planning on maintaining this package as we have several projects that make use o
 This project has been forked originally from https://github.com/Vinelab/cdn. All credit for the original work goes there.
 
 #### Laravel Support
-- If you are using Laravel 10 use `v4.*`
+- If you are using Laravel 12 use `v5.*`
+- If you are using Laravel 11 use `v4.1.*`
+- If you are using Laravel 10 use `v4.0.*`
 - If you are using Laravel 9 use `v3.*`
 - If you are using Laravel 8 use `v2.2.0`
 - If you are using Laravel 7 use `v2.1.0`
@@ -267,8 +269,16 @@ To use a file from outside the `public/` directory, anywhere in `app/` use the `
 To run the tests, run the following command from the project folder.
 
 ```bash
-$ ./vendor/bin/phpunit
+composer test
 ```
+
+Static analysis (PHPStan with Larastan) runs separately:
+
+```bash
+composer lint
+```
+
+Both are run in CI on every push, and both must pass before a pull request is merged.
 
 ## Support
 

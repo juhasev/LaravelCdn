@@ -1,0 +1,28 @@
+name: PHPStan
+
+on: [ push ]
+
+permissions:
+    contents: read
+
+jobs:
+    phpstan:
+        name: lint
+        runs-on: ubuntu-latest
+
+        steps:
+            -   name: Checkout code
+                uses: actions/checkout@v4
+
+            -   name: Setup PHP
+                uses: shivammathur/setup-php@v2
+                with:
+                    php-version: 8.2
+                    extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, fileinfo
+                    coverage: none
+
+            -   name: Install dependencies
+                run: composer update --prefer-stable --no-interaction --no-progress
+
+            -   name: Run PHPStan
+                run: composer lint

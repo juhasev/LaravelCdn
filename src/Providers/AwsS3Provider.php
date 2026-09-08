@@ -19,17 +19,17 @@ use Symfony\Component\Console\Output\ConsoleOutput;
  *
  * @category Driver
  *
- * @property string  $provider_url
- * @property string  $threshold
- * @property string  $version
- * @property string  $region
- * @property string  $credential_key
- * @property string  $credential_secret
- * @property string  $buckets
- * @property string  $acl
- * @property string  $cloudfront
- * @property string  $cloudfront_url
- * @property string $http
+ * @property string      $provider_url
+ * @property int         $threshold
+ * @property string      $version
+ * @property string      $region
+ * @property string|null $endpoint
+ * @property array       $buckets
+ * @property string      $acl
+ * @property bool|string $cloudfront
+ * @property string      $cloudfront_url
+ * @property array|null  $http
+ * @property string      $upload_folder
  *
  * @author   Mahmoud Zalt <mahmoud@vinelab.com>
  */
@@ -83,7 +83,7 @@ class AwsS3Provider extends Provider
     protected $s3_client;
 
     /**
-     * @var
+     * @var mixed
      */
     protected $batch;
 
@@ -93,7 +93,7 @@ class AwsS3Provider extends Provider
     protected $cdn_helper;
 
     /**
-     * @var
+     * @var mixed
      */
     protected $configurations;
 
@@ -253,6 +253,7 @@ class AwsS3Provider extends Provider
      */
     private function getFilesAlreadyOnBucket($assets)
     {
+        /** @var Collection<string, array{Key: string, LastModified: int, Size: int}> $filesOnAWS */
         $filesOnAWS = new Collection([]);
 
         $files = $this->s3_client->listObjects([
@@ -307,7 +308,7 @@ class AwsS3Provider extends Provider
         // Vinelab\Cdn\Providers\AwsS3Provider::$buckets has no effect
         $bucket = $this->buckets;
 
-        return rtrim(key($bucket), '/');
+        return rtrim((string) key($bucket), '/');
     }
 
     /**
@@ -386,7 +387,7 @@ class AwsS3Provider extends Provider
     }
 
     /**
-     * @return string
+     * @return bool
      */
     public function getCloudFront()
     {
