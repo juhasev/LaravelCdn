@@ -49,6 +49,20 @@
         "test": "vendor/bin/phpunit",
         "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
     },
+    "config": {
+        "policy": {
+            "malware": {
+                "block": true,
+                "block-scope": "all"
+            },
+            "advisories": {
+                "block": true
+            },
+            "abandoned": {
+                "audit": "report"
+            }
+        }
+    },
     "extra": {
         "laravel": {
             "providers": [
