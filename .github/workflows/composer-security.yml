@@ -1,0 +1,43 @@
+name: Composer Security
+
+on:
+  push:
+    paths:
+      - 'composer.json'
+      - '.github/workflows/composer-security.yml'
+  pull_request:
+  schedule:
+    # Weekly, so a dependency newly flagged in an advisory still surfaces even
+    # when nothing in the repository has changed.
+    - cron: '27 6 * * 1'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    name: Malware & advisory audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          persist-credentials: false
+
+      - name: Setup PHP with a pinned Composer
+        uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # 2.37.2
+        with:
+          php-version: '8.3'
+          # Exact patch, not `composer:2.10`, which setup-php resolves to the
+          # latest 2.10.x and would let the audit binary change on its own.
+          tools: composer:2.10.3
+          coverage: none
+
+      - name: Resolve dependencies (a library ships no lock file)
+        run: composer update --prefer-dist --no-interaction --no-progress
+
+      - name: Audit
+        # Composer 2.10 and above fails on known malware and on security advisories.
+        run: composer audit
